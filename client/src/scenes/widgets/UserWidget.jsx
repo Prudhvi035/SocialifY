@@ -26,9 +26,15 @@ const UserWidget = ({ userId, picturePath }) => {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
+    if (!response.ok) {
+      throw new Error("Failed to fetch user data");
+    }
     const data = await response.json();
     setUser(data);
-  };
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+  }
+};
 
   useEffect(() => {
     getUser();
