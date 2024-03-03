@@ -30,7 +30,7 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors({ 
-  origin: "https://socialify-orpin.vercel.app/",
+  origin: "https://socialify-orpin.vercel.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true,
   optionsSuccessStatus: 204,
