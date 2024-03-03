@@ -30,13 +30,6 @@ export const createPost = async (req, res) => {
 export const getFeedPosts = async (req, res) => {
   try {
     const post = await Post.find();
-    
-    // Fisher-Yates shuffle algorithm
-    for (let i = posts.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [posts[i], posts[j]] = [posts[j], posts[i]];
-    }
-    
     res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });
