@@ -11,6 +11,7 @@ const FriendListWidget = ({ userId }) => {
   const friends = useSelector((state) => state.user.friends);
 
   const getFriends = async () => {
+    try{
     const response = await fetch(
       `https://socialify-production.up.railway.app/users/${userId}/friends`,
       {
@@ -23,7 +24,7 @@ const FriendListWidget = ({ userId }) => {
     }
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
-  }; catch (error) {
+  } catch (error) {
     console.error("Error fetching friends:", error.message);
   }
 };
