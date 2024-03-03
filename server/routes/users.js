@@ -5,14 +5,13 @@ import {
     addRemoveFriend,
 } from "../controllers/users.js";
 import { verifyToken } from "../middleware/auth.js";
+import cors from "cors";
 
 const router = express.Router();
 
-/* READ */
-router.get("/:id", verifyToken, getUser);
-router.get("/:id/friends", verifyToken, getUserFriends);
+router.get("/:id", cors({ origin: "https://socialify-orpin.vercel.app" }), verifyToken, getUser);
+router.get("/:id/friends", cors({ origin: "https://socialify-orpin.vercel.app" }), verifyToken, getUserFriends);
+router.patch("/:id/:friendId", cors({ origin: "https://socialify-orpin.vercel.app" }), verifyToken, addRemoveFriend);
 
-/* UPDATE */
-router.patch("/:id/:friendId", verifyToken, addRemoveFriend);
 
 export default router;
