@@ -80,7 +80,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://socialify-production.up.railway.app/auth/login", {
+    const loggedInResponse = await fetch("https://socialify-production.up.railway.app/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
