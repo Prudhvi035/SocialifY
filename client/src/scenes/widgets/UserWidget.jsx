@@ -22,6 +22,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
+    try{
     const response = await fetch(`https://socialify-production.up.railway.app/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
@@ -31,7 +32,7 @@ const UserWidget = ({ userId, picturePath }) => {
     }
     const data = await response.json();
     setUser(data);
-  }; catch (error) {
+  } catch (error) {
     console.error("Error fetching user data:", error);
   }
 };
