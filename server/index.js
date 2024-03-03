@@ -32,6 +32,15 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
+const corsOptions = {
+  origin: "https://socialify-orpin.vercel.app/",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
 /* FILE STORAGE */
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
