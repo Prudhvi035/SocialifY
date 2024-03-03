@@ -65,7 +65,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "http://socialify-production.up.railway.app/auth/register",
+      "https://socialify-production.up.railway.app/auth/register",
       {
         method: "POST",
         body: formData,
