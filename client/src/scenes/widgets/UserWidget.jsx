@@ -31,7 +31,7 @@ const UserWidget = ({ userId, picturePath }) => {
     }
     const data = await response.json();
     setUser(data);
-  } catch (error) {
+  }; catch (error) {
     console.error("Error fetching user data:", error);
   }
 };
