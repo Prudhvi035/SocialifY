@@ -12,15 +12,21 @@ const FriendListWidget = ({ userId }) => {
 
   const getFriends = async () => {
     const response = await fetch(
-      `http://localhost:3001/users/${userId}/friends`,
+      `https://socialify-production.up.railway.app/users/${userId}/friends`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+    if (!response.ok) {
+      throw new Error(`Failed to fetch friends: ${response.statusText}`);
+    }
     const data = await response.json();
     dispatch(setFriends({ friends: data }));
-  };
+  } catch (error) {
+    console.error("Error fetching friends:", error.message);
+  }
+};
 
   useEffect(() => {
     getFriends();
